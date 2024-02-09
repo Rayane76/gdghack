@@ -9,7 +9,7 @@ function generateTokenForUser(user) {
 
     const payload = {
         sub: user.id,
-        iat: new Date().getTime()
+        // iat: new Date().getTime()
     };
     const secretKey = process.env.JWT_SECRET_KEY;
     const token = jwt.sign(payload, secretKey, { expiresIn: '76h' });
@@ -39,7 +39,7 @@ async function sendConfirmationEmail(user, event) {
     });
 
     let token = generateTokenForUser(user);
-    let link = `https://yourapp.com/confirm-registration?token=${token}`;
+    let link = `http://localhost:3000/confirm-registration?token=${token}`;
 
     let info = await transporter.sendMail({
         from: process.env.EMAIL,
@@ -51,4 +51,3 @@ async function sendConfirmationEmail(user, event) {
     console.log('Message sent: %s', info.messageId);
 }
 
-sendConfirmationEmail({email:"ramilgh1604@gmail.com",id:1})

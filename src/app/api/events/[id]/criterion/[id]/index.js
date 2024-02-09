@@ -2,19 +2,19 @@ import prisma from '@/app/database/PrismaClient';
 
 import { sendSuccessResponse, sendErrorResponse } from '@/app/utils/response';
 
-export async function GET() {
+export async function GET(req) {
     return await getCriterion(req);
 }
-export async function PUT() {
+export async function PUT(req) {
     return await updateCriterion(req);
 }
-export async function DELETE() {
+export async function DELETE(req) {
     return await deleteCriterion(req);
 }
 
 async function getCriterion(req) {
     try {
-        const { id: criterionId } = req.params;
+        const { id: criterionId } = req.query;
         const criterion = await prisma.criterion.findUnique({
             where: { id: criterionId },
         });
@@ -29,7 +29,7 @@ async function getCriterion(req) {
 
 async function updateCriterion(req) {
     try {
-        const { id: criterionId } = req.params;
+        const { id: criterionId } = req.query;
         const { name, description, event_id } = await req.json();
         const criterion = prisma.criterion.update({
             where: { id: criterionId },
@@ -47,7 +47,7 @@ async function updateCriterion(req) {
 
 async function deleteCriterion(req) {
     try {
-        const { id: criterionId } = params;
+        const { id: criterionId } = req.query;
         await prisma.criterion.delete({
             where: { id: criterionId },
         });

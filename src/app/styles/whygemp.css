@@ -1,0 +1,65 @@
+.whygemp{
+    font-size: 22px;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    background-image: url("/images/Frame.svg");
+}
+
+.desc{
+    padding-left: 40px;
+    padding-right: 40px;
+    border-radius: 30px;
+    width: 60%;
+    height: auto;
+    border-width: 1px;
+    border-color: gray;
+    border-style: solid;
+    margin-top: 50px;
+}
+
+.paragraph{
+    line-height: 3;
+    font-size:18px;
+    color: white;
+}
+
+.title{
+    background: linear-gradient(to bottom, #ffffff, #c3c3c3);
+    -webkit-background-clip: text;
+    color: transparent; 
+    display: inline-block;
+    font-weight: 900 ;
+    margin-bottom: 8px;
+}
+
+
+@media only screen and (max-width: 968px) {
+
+    .paragraph{
+        line-height: 2.5;
+        font-size: 16px;
+        color: white;
+    }
+
+
+}
+
+@media only screen and (max-width: 720px) {
+
+    .paragraph{
+        line-height: 1.8;
+        font-size: 15px;
+        color: white;
+    }
+
+    .desc{
+        margin-top: 30px;
+        padding-left: 15px;
+        padding-right: 15px;
+    }
+
+}
+

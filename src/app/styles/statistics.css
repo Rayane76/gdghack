@@ -1,0 +1,80 @@
+.statistics{
+    height: 100vh;
+    background-image: url("/images/Frame3.svg");
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.title{
+    background: linear-gradient(to bottom, #ffffff, #c3c3c3);
+    -webkit-background-clip: text;
+    color: transparent; 
+    display: inline-block;
+    font-weight: 900 ;
+    margin-bottom: 8px;
+}
+
+.statsDiv{
+    margin-top: 60px;
+    display: flex;
+    justify-content: space-between;
+    border-bottom: 2px solid #33BBCF;
+    width: 75%;
+    height: auto;
+}
+
+.blueRect{
+    order: 1;
+    margin-left: 10%;
+    height: 200px;
+    width: 150px;
+    background-color: #4285F4;
+    margin-top: 100px;
+}
+
+.greenRect{
+    order: 2;
+    height: 300px;
+    width: 150px;
+    background-color: #0D9D58;
+}
+
+.redRect{
+    margin-top: 140px;
+    order: 3;
+    margin-right: 10%;
+    height: 160px;
+    width: 150px;
+    background-color: #EA4334;
+}
+
+.rectTitles{
+    display: flex;
+    justify-content: space-between;
+    width: 75%;
+}
+
+.t1{
+    order: 1;
+ color: white;
+ margin-left: 10%;
+ width: 150px;
+ text-align: center;
+}
+
+.t2{
+    order: 2;
+  color: #0D9D58;
+  width: 150px;
+  text-align: center;
+}
+.t3{
+    order: 3;
+  color: #EA4334;
+  margin-right: 10%;
+  width: 150px;
+  text-align: center;
+}
+

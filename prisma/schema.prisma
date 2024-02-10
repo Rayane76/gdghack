@@ -1,0 +1,98 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+    provider = "prisma-client-js"
+}
+
+datasource db {
+    provider = "postgresql"
+    url      = env("DATABASE_URL")
+}
+
+model User {
+    id         Int          @id @default(autoincrement())
+    email      String       @unique
+    password   String
+    fullname   String
+    role       Role
+    Submission Submission[]
+    user_event user_event[]
+}
+
+enum Role {
+    USER
+    ADMIN
+}
+
+model Event {
+    id            Int             @id @default(autoincrement())
+    title         String
+    description   String
+    start_date    DateTime
+    end_date      DateTime
+    user_event    user_event[]
+    event_judge   event_judge[]
+    event_sponsor event_sponsor[]
+    Criterion     Criterion[]
+}
+
+model user_event {
+    user_id  Int
+    event_id Int
+    User     User  @relation(fields: [user_id], references: [id])
+    Event    Event @relation(fields: [event_id], references: [id])
+
+    @@id([user_id, event_id])
+}
+
+model Judge {
+    id          Int           @id @default(autoincrement())
+    name        String
+    title       String
+    email       String
+    event_judge event_judge[]
+}
+
+model event_judge {
+    event_id Int
+    judge_id Int
+    Event    Event @relation(fields: [event_id], references: [id])
+    Judge    Judge @relation(fields: [judge_id], references: [id])
+
+    @@id([event_id, judge_id])
+}
+
+model Sponsor {
+    id            Int             @id @default(autoincrement())
+    name          String
+    event_sponsor event_sponsor[]
+}
+
+model event_sponsor {
+    event_id   Int
+    sponsor_id Int
+    Event      Event   @relation(fields: [event_id], references: [id])
+    Sponsor    Sponsor @relation(fields: [sponsor_id], references: [id])
+
+    @@id([event_id, sponsor_id])
+}
+
+model Criterion {
+    id          Int    @id @default(autoincrement())
+    name        String
+    description String
+    event_id    Int
+    Event       Event  @relation(fields: [event_id], references: [id])
+}
+
+model Submission {
+    id      Int  @id @default(autoincrement())
+    user_id Int
+    user    User @relation(fields: [user_id], references: [id])
+}
+
+model Feedback {
+    id      Int    @id @default(autoincrement())
+    content String
+}

@@ -3,7 +3,7 @@ import prisma from '@/app/database/PrismaClient';
 import { sendSuccessResponse, sendErrorResponse } from '@/app/utils/response';
 
 export async function GET() {
-    return await getEvents(req);
+    return await getEvents();
 }
 export async function POST() {
     return await createEvent(req);
@@ -12,7 +12,7 @@ export async function PUT() {
     return await createEvent(req);
 }
 
-async function getEvents(req) {
+async function getEvents() {
     try {
         const events = prisma.Event.findMany();
         return sendSuccessResponse(res, 200, 'Events found successfully', events);

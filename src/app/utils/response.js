@@ -2,6 +2,7 @@
 import { NextResponse } from "next/server";
 
 export const sendSuccessResponse = (res, statusCode, message, data) => {
+    data.password = undefined
     return NextResponse.json({success: true, message, data}, {status: statusCode})
 }
 

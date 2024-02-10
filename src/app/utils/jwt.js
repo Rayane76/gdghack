@@ -1,7 +1,30 @@
 import jwt from 'jsonwebtoken';
 import sendMail from './sendMail';
 
-function generateTokenForUser(user) {
+export function generateEventInvitationToken(email, event_id) {
+    const payload = {
+        email,
+        event_id,
+    };
+
+    const secretKey = process.env.JWT_SECRET_KEY;
+    const token = jwt.sign(payload, secretKey, { expiresIn: '76h' });
+
+    return token;
+}
+
+export function verifyEventInvitationToken(token) {
+    try {
+        const secretKey = process.env.JWT_SECRET_KEY;
+        const decoded = jwt.verify(token, secretKey);
+        return decoded;
+    } catch (error) {
+        console.log('Invalid token');
+        return null;
+    }
+}
+
+export function generateTokenForUser(user) {
 
     const payload = {
         sub: user.id,
@@ -13,7 +36,7 @@ function generateTokenForUser(user) {
     return token;
 }
 
-function verifyToken(token) {
+export function verifyToken(token) {
     try {
         const secretKey = process.env.JWT_SECRET_KEY;
         const decoded = jwt.verify(token, secretKey);
@@ -22,14 +45,4 @@ function verifyToken(token) {
         console.log('Invalid token');
         return null;
     }
-}
-
-async function sendConfirmationEmail(user, event) {
-
-    const token = generateTokenForUser(user);
-    const link = `http://localhost:3000/confirm-registration?token=${token}`;
-    const content = `Please click on the following link to confirm your registration to "${event}": ${link}`;
-
-    const info = await sendMail(user.email, 'Confirm your registration', content);
-    console.log('Message sent: %s', info.messageId);
 }

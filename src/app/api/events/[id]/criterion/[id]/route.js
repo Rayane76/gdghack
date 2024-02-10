@@ -1,4 +1,4 @@
-import prisma from '@/app/database/PrismaClient';
+mport prisma from '@/app/database/PrismaClient';
 
 import { sendSuccessResponse, sendErrorResponse } from '@/app/utils/response';
 

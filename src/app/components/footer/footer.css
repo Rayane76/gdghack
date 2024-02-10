@@ -1,0 +1,24 @@
+#footer{
+    background-image: url('../../../../public/images/Footer.png');
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+    height: 400px;
+}
+#footer h4{
+    font-size: 30px;
+    font-weight: bolder;
+    color: grey;
+}
+.footer-element{
+    height: 50%;
+    display: center;
+    align-items: center;
+}
+.footer-element li{
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    color: white;
+}

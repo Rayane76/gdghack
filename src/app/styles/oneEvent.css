@@ -1,6 +1,7 @@
 .imageandtitle{
     height: 250px;
     position: relative;
+    margin-bottom: 75px;
 }
 .devImage{
     border-top-left-radius: 10px;

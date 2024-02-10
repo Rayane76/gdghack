@@ -1,0 +1,49 @@
+
+.currentEvents{
+    background-image: url("/images/frameJudge1.svg");
+    height: 100vh;
+}
+
+.logoSect{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-top: 30px;
+}
+
+.logoImage{
+    height: 75px;
+    width: 75px;
+    margin-left: 50px;
+}
+
+.profile{
+    margin-right: 50px;
+    height: 50px;
+    width: 50px;
+}
+
+.title{
+    display: flex;
+    justify-content: center;
+}
+
+.titleText{
+    background: linear-gradient(to bottom, #ffffff, #c3c3c3);
+    -webkit-background-clip: text;
+    color: transparent; 
+    display: inline-block;
+    font-weight: 900 ;
+    margin-bottom: 8px;
+    font-size: 45px;
+}
+
+.evenements{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    margin-left: 100px;
+    margin-right: 100px;
+    justify-content: space-between;
+    margin-top: 100px;
+}

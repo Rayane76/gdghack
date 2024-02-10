@@ -14,9 +14,9 @@ export default function Evenements(){
               <h1 className="title">Events</h1>
               </div>
               <div className="evenements">
-              <OneEvent className="cardItem" image={"/images/devfest.png"} title={"Devfest 22"} date={"2022"}/>
-              <OneEvent className="cardItem" image={"/images/devfest.png"} title={"Devfest 22"} date={"2022"}/>
-              <OneEvent className="cardItem" image={"/images/devfest.png"} title={"Devfest 22"} date={"2022"}/>
+              <OneEvent className="cardItem" image={"/images/devfest.png"} title={"Devfest 22"} date={"2022"} route={""}/>
+              <OneEvent className="cardItem" image={"/images/devfest.png"} title={"Devfest 22"} date={"2022"} route={""}/>
+              <OneEvent className="cardItem" image={"/images/devfest.png"} title={"Devfest 22"} date={"2022"} route={""}/>
               </div>
             </div>
         </>

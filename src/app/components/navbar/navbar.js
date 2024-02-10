@@ -29,7 +29,7 @@ function NavigationBar() {
         <Nav className="me-auto" style={{marginLeft:'auto'}}>
           <Nav.Link href="#about" style={{color:'#FFFFFF' ,marginRight:'20px',fontSize:'20px'}}>About</Nav.Link>
           <Nav.Link href="#stats" style={{color:'#FFFFFF' ,marginRight:'20px',fontSize:'20px'}}>Stats</Nav.Link>
-          <Nav.Link href="#events" style={{color:'#FFFFFF' ,marginRight:'20px',fontSize:'20px'}}>Events</Nav.Link>
+          <Nav.Link href="/judge" style={{color:'#FFFFFF' ,marginRight:'20px',fontSize:'20px'}}>Judge</Nav.Link>
           <Nav.Link href="#contact" style={{color:'#FFFFFF' ,marginRight:'20px',fontSize:'20px'}}>Contact</Nav.Link>
         </Nav>
       </Container>

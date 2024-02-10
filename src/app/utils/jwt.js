@@ -1,10 +1,11 @@
 import jwt from 'jsonwebtoken';
 import sendMail from './sendMail';
 
-export function generateEventInvitationToken(email, event_id) {
+export function generateEventInvitationToken(email, event_id, role="USER") {
     const payload = {
         email,
         event_id,
+        role,
     };
 
     const secretKey = process.env.JWT_SECRET_KEY;

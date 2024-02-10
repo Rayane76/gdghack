@@ -2,20 +2,34 @@ import prisma from '@/app/database/PrismaClient';
 
 import { sendSuccessResponse, sendErrorResponse } from '@/app/utils/response';
 
-export async function GET() {
+export async function GET(req) {
     return await getCriteria(req);
 }
-export async function POST() {
+export async function POST(req) {
     return await createCriterion(req);
 }
-export async function PUT() {
+export async function PUT(req) {
     return await createCriterion(req);
 }
 
 async function getCriteria(req) {
     try {
+        // get the "field" query parameter from the request
+        const { field } = req.query;
+
+        if (field) {
+            // get criteria by field
+            const criteria = prisma.criterion.findMany({
+                where: {
+                    field
+                }
+            });
+            return sendSuccessResponse(res, 200, 'Criteria found successfully', criteria);
+        }
+
         const criteria = prisma.criterion.findMany();
         return sendSuccessResponse(res, 200, 'Criteria found successfully', criteria);
+
     } catch (error) {
         return sendErrorResponse(res, 500, 'Error getting criteria', error.message);
     }

@@ -1,4 +1,4 @@
-mport prisma from '@/app/database/PrismaClient';
+import prisma from '@/app/database/PrismaClient';
 
 import { sendSuccessResponse, sendErrorResponse } from '@/app/utils/response';
 
@@ -18,10 +18,13 @@ async function getCriterion(req) {
         const criterion = await prisma.criterion.findUnique({
             where: { id: criterionId },
         });
+
         if (!criterion) {
             return sendErrorResponse(res, 404, 'Criterion not found', 'criterion not found');
         }
+
         return sendSuccessResponse(res, 200, 'Criterion found successfully', criterion);
+
     } catch (error) {
         return sendErrorResponse(res, 500, 'Error getting criterion', error.message);
     }

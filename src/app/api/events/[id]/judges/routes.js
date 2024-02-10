@@ -1,16 +1,22 @@
 import prisma from '@/app/database/PrismaClient'
-import { sendSuccessResponse, sendErrorResponse } from '@/app/utils/response'
 import { generateEventInvitationToken } from '@/app/utils/jwt'
-import { sendEmail } from '@/app/utils/mailer'
+import { sendSuccessResponse, sendErrorResponse } from '@/app/utils/response'
 
 export const POST = async (req) => {
+    const { id:events_id, judge_id } = req.query
+
     try {
+        const event = await prisma.event.findUnique({
+            where: {
+                id: parseInt(events_id)
+            }
+        })
 
-        // get the team
-        const { searchParams } = new URL(req.url);
-        const team_id = searchParams.get('id');
+        if (!event) {
+            return sendErrorResponse(res, 404, 'Event not found', null)
+        }
 
-        // get the emails
+        // get the judges emails
         const {
             emails,
         } = await req.json()
@@ -31,8 +37,23 @@ export const POST = async (req) => {
             sendEmail(pendingUser.email, "Participation confirmation", text)
         }
 
-        return sendSuccessResponse(res, 201, "Participants added successfully", null);
+        const eventJudge = await prisma.event_judge.create({
+            data: {
+                event: {
+                    connect: {
+                        id: parseInt(event_id)
+                    }
+                },
+                judge: {
+                    connect: {
+                        id: judge_id
+                    }
+                }
+            }
+        })
+
+        return sendSuccessResponse(201, eventJudge)
     } catch (error) {
-        return sendErrorResponse(res, 500, "Error adding participant", error.message);
+        return sendErrorResponse(500, error)
     }
 }

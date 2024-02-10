@@ -21,8 +21,8 @@ model User {
 }
 
 model PendingUser {
-    email     String @id @unique
-    token     String
+    email String @id @unique
+    token String
 }
 
 enum Role {
@@ -104,6 +104,7 @@ model Criterion {
     name        String
     description String
     event_id    Int
+    field       Field
     Event       Event  @relation(fields: [event_id], references: [id])
 }
 

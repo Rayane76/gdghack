@@ -1,4 +1,7 @@
 import { Inter } from "next/font/google";
+import 'bootstrap/dist/css/bootstrap.min.css';
+import { ClerkProvider } from '@clerk/nextjs'
+import "bootstrap/dist/css/bootstrap.min.css";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -8,9 +11,11 @@ export const metadata = {
 };
 
 export default function RootLayout({ children }) {
-    return (
-        <html lang="en">
-            <body className={inter.className} style={{ margin: "0" }}>{children}</body>
-        </html>
-    );
+  return (
+    <ClerkProvider>
+    <html lang="en">
+      <body className={inter.className} style={{margin:"0"}}>{children}</body>
+    </html>
+    </ClerkProvider>
+  );
 }

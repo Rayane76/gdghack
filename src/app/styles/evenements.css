@@ -1,0 +1,30 @@
+.evenements{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    margin-left: 100px;
+    margin-right: 100px;
+    justify-content: space-between;
+}
+
+.events{
+    height: 100vh;
+    background-image: url("/images/Events.svg");
+}
+
+.title{
+    background: linear-gradient(to bottom, #ffffff, #c3c3c3);
+    -webkit-background-clip: text;
+    color: transparent; 
+    display: inline-block;
+    font-weight: 900 ;
+    margin-bottom: 8px;
+}
+
+
+.titleDiv{
+    padding-top: 50px;
+    display: flex;
+    justify-content: center;
+    margin-bottom: 5%;
+}

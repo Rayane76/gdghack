@@ -1,0 +1,46 @@
+#event-teams{
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+    background-image: url('/images/Frame.png');
+}
+.event-teams-top{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+}
+.event-teams-middle{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-top: 50px;
+    width: 100%;
+}
+.event-teams-middle h1{
+    font-size: 40px;
+    font-weight: bolder;
+    color: white;
+}
+.search-for-teams{
+    width: 70%;
+    display: flex;
+    justify-content: space-between;
+
+}
+.search-for-teams input{
+    width: 70%;
+    height: 50px;
+    background-color: transparent;
+    border-radius: 5px;
+    padding-left: 10px;
+    margin-top: 20px;
+}
+.search-for-teams button{
+    width: 20%;
+    height: 50px;
+    border-radius: 5px;
+    background-color:transparent;
+    color: white;
+    margin-top: 20px;
+}

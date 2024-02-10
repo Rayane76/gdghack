@@ -16,13 +16,19 @@ model User {
     password   String
     fullname   String
     role       Role
-    Submission Submission[]
     user_event user_event[]
+    user_team  user_team[]
+}
+
+model PendingUser {
+    email String @id @unique
+    token String
 }
 
 enum Role {
-    USER
+    PARTICIPANT
     ADMIN
+    JUDGE
 }
 
 model Event {
@@ -51,7 +57,22 @@ model Judge {
     name        String
     title       String
     email       String
+    field       Field
     event_judge event_judge[]
+}
+
+enum Field {
+    DESIGN
+    FRONTEND
+    BACKEND
+    UI
+    BLOCKCHAIN
+    CYBERSECURITY
+    AI
+    MACHINE_LEARNING
+    IOT
+    DEVOPS
+    MOBILE
 }
 
 model event_judge {
@@ -83,13 +104,32 @@ model Criterion {
     name        String
     description String
     event_id    Int
+    field       Field
     Event       Event  @relation(fields: [event_id], references: [id])
 }
 
-model Submission {
-    id      Int  @id @default(autoincrement())
+model Team {
+    event_id                Int
+    name                    String
+    has_submitted           Boolean     @default(false)
+    submission_project_name String?
+    submission_thumbnail    String?
+    submission_description  String?
+    submission_techs        String?
+    submission_links        String?
+    submission_demo_link    String?
+    user_team               user_team[]
+
+    @@id([event_id])
+}
+
+model user_team {
     user_id Int
-    user    User @relation(fields: [user_id], references: [id])
+    team_id Int
+    User    User @relation(fields: [user_id], references: [id])
+    Team    Team @relation(fields: [team_id], references: [event_id])
+
+    @@id([user_id, team_id])
 }
 
 model Feedback {

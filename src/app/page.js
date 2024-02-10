@@ -1,8 +1,9 @@
-import EventTeams from "./components/event-teams/event-teams";
+import Dashboard from "./components/Dashboard/dashboard";
+
 export default function Home() {
   return (
    <>
-    <EventTeams />
+    <Dashboard /> 
    </>
   );
 }
